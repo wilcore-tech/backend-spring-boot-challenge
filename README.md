@@ -1,5 +1,21 @@
 # Address Book (Spring Boot)
 
+## Prerequisites
+
+Before starting, ensure you have the following installed:
+
+- **Java 17+** (JDK) - [Download from Adoptium](https://adoptium.net/) or [Oracle](https://www.oracle.com/java/technologies/downloads/)
+- **Maven 3.8+** - [Download from Apache](https://maven.apache.org/download.cgi)
+- **IDE** (recommended) - IntelliJ IDEA, VS Code with Java extensions, or Eclipse
+
+Verify your installation:
+```bash
+java -version   # Should show 17 or higher
+mvn -version    # Should show 3.8 or higher
+```
+
+---
+
 ## Overview
 
 Create a RESTful API using **Spring Boot**, **Java**, and **Hibernate/JPA**, following industry-recognized standards and best practices.
@@ -62,9 +78,3 @@ The H2 Console (for debugging) is available at `http://localhost:8080/h2-console
 ### Documentation/API Client
 
 You do not need to create a front end. Optionally, you can create tests or Postman/Bruno collections to show your API's operation. As an alternative, at least provide some documentation in a README so we know how to make requests.
-
----
-
-## Preparing for the Interview
-
-**[Next Steps...](../../next-steps-real-time.md)**
