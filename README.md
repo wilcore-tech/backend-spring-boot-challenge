@@ -62,13 +62,31 @@ The H2 database is pre-configured with sample data. The `contacts` table has the
 - `data.sql` - Seeds 15 sample contacts
 - `AddressBookApplication.java` - Spring Boot entry point
 
-### Running the Application
+---
 
-```bash
-mvn spring-boot:run
-```
+## Getting Started
 
-The API will be available at `http://localhost:8080`
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/wilcore-tech/backend-spring-boot-challenge.git
+   cd backend-spring-boot-challenge
+   ```
+
+2. **Install dependencies and build**
+   ```bash
+   mvn clean install
+   ```
+
+3. **Run the application**
+   ```bash
+   mvn spring-boot:run
+   ```
+
+4. **Verify it's running**
+   - API: http://localhost:8080
+   - H2 Console: http://localhost:8080/h2-console
+
+### H2 Database Console
 
 The H2 Console (for debugging) is available at `http://localhost:8080/h2-console`:
 - JDBC URL: `jdbc:h2:mem:addressbook`
