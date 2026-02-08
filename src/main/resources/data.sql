@@ -1,0 +1,16 @@
+INSERT INTO contacts (first_name, last_name, street, city, state, zip, phone, email) VALUES
+('Alice', 'Johnson', '123 Main St', 'Springfield', 'IL', '62701', '555-0101', 'alice.johnson@example.com'),
+('Bob', 'Smith', '456 Oak Ave', 'Chicago', 'IL', '60601', '555-0102', 'bob.smith@example.com'),
+('Carol', 'Williams', '789 Pine Rd', 'Austin', 'TX', '78701', '555-0103', 'carol.williams@example.com'),
+('David', 'Brown', '321 Elm St', 'Seattle', 'WA', '98101', '555-0104', 'david.brown@example.com'),
+('Eva', 'Davis', '654 Maple Dr', 'Denver', 'CO', '80201', '555-0105', 'eva.davis@example.com'),
+('Frank', 'Miller', '987 Cedar Ln', 'Boston', 'MA', '02101', '555-0106', 'frank.miller@example.com'),
+('Grace', 'Wilson', '147 Birch Way', 'Portland', 'OR', '97201', '555-0107', 'grace.wilson@example.com'),
+('Henry', 'Moore', '258 Spruce Ct', 'Miami', 'FL', '33101', '555-0108', 'henry.moore@example.com'),
+('Ivy', 'Taylor', '369 Walnut Pl', 'Atlanta', 'GA', '30301', '555-0109', 'ivy.taylor@example.com'),
+('Jack', 'Anderson', '741 Hickory Blvd', 'Phoenix', 'AZ', '85001', '555-0110', 'jack.anderson@example.com'),
+('Karen', 'Thomas', '852 Chestnut Ave', 'San Diego', 'CA', '92101', '555-0111', 'karen.thomas@example.com'),
+('Leo', 'Jackson', '963 Poplar St', 'Dallas', 'TX', '75201', '555-0112', 'leo.jackson@example.com'),
+('Mia', 'White', '159 Willow Dr', 'Minneapolis', 'MN', '55401', '555-0113', 'mia.white@example.com'),
+('Nick', 'Harris', '267 Ash Rd', 'Detroit', 'MI', '48201', '555-0114', 'nick.harris@example.com'),
+('Olivia', 'Martin', '378 Beech Ln', 'Philadelphia', 'PA', '19101', '555-0115', 'olivia.martin@example.com');
