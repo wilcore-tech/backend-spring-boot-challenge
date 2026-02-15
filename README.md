@@ -26,40 +26,104 @@ The API should allow clients to view, search, and edit the contact database. You
 
 ## Details
 
-### Endpoints
+### Core Requirements (All Candidates)
 
 Create endpoints that do each of the following things. You should decide appropriate naming and methods.
 
 - List all contacts, with options for pagination and sorting.
-  - *Example: Get the page 2 of 10 contacts, sorted by lastName in descending order.*
+  - *Example: Get page 2 of 10 contacts, sorted by lastName in descending order.*
 - View details for a specific contact.
   - *Example: Retrieve the contact with ID 5.*
 - Create a new contact. Return the created contact with its assigned ID.
-- Update an existing contact.
-- Delete a contact.
-- Search contacts by name, email, city, or state. Support pagination and sorting on results.
+
+---
+
+### Choose Your Path
+
+After completing the core requirements, complete **ONE** of the following paths based on your interview focus:
+
+---
+
+#### Path A: Standard CRUD *(Default)*
+
+Complete the traditional CRUD operations:
+
+- **Update** an existing contact.
+- **Delete** a contact.
+- **Search** contacts by name, email, city, or state. Support pagination and sorting on results.
   - *Example: Search for "smith", return page 1 with 5 results, sorted by city ascending.*
+
+---
+
+#### Path B: Identity & Access Control *(For Identity-Focused Roles)*
+
+> **Background Context:**
+> 
+> In identity management systems, users often have different "account levels" based on how thoroughly their identity has been verified. For example:
+> - **BASIC** - User created an account but hasn't proven who they are yet
+> - **VERIFIED** - User has completed identity verification (e.g., matched personal info)
+> - **PREMIUM** - User has completed enhanced verification (e.g., in-person proofing)
+> 
+> Certain features or data may only be accessible to users who have reached a minimum account level. Additionally, all verification attempts (successful or not) should be logged for security and compliance purposes.
+
+Complete the following identity-focused features:
+
+1. **Account Levels**: Each contact has an `account_level` that starts as `BASIC`. This field already exists in the database.
+
+2. **Identity Verification Endpoint**: Create an endpoint to verify a contact's identity.
+   - Accept the contact's ID along with verification data (last 4 digits of SSN + date of birth)
+   - Compare against the stored values in the database
+   - If matched, upgrade the contact's `account_level` from `BASIC` to `VERIFIED`
+   - If not matched, return an appropriate error
+
+3. **Access-Controlled Endpoint**: Create a "secure details" endpoint that returns sensitive contact information.
+   - This endpoint should **only** return data for contacts with `account_level` of `VERIFIED` or higher
+   - Return a 403 Forbidden if the contact is still `BASIC`
+
+4. **Audit Logging**: Log all verification attempts to the `verification_audits` table.
+   - Record: which contact, when, success or failure
+   - The audit table already exists in the database schema
+
+---
 
 ### Database
 
-The H2 database is pre-configured with sample data. The `contacts` table has these columns:
+The H2 database is pre-configured with sample data.
 
-- id
-- first_name
-- last_name
-- street
-- city
-- state
-- zip
-- phone
-- email
+#### `contacts` table columns:
+| Column | Description |
+|--------|-------------|
+| id | Primary key |
+| first_name | Contact's first name |
+| last_name | Contact's last name |
+| street | Street address |
+| city | City |
+| state | State |
+| zip | ZIP code |
+| phone | Phone number |
+| email | Email address |
+| account_level | *Path B only* - BASIC, VERIFIED, or PREMIUM |
+| last_four_ssn | *Path B only* - Last 4 digits of SSN for verification |
+| date_of_birth | *Path B only* - Date of birth for verification |
+| verification_date | *Path B only* - When identity was verified |
+
+#### `verification_audits` table columns *(Path B only)*:
+| Column | Description |
+|--------|-------------|
+| id | Primary key |
+| contact_id | Which contact was being verified |
+| attempted_at | When the verification was attempted |
+| success | Whether verification succeeded (true/false) |
+| failure_reason | Why it failed (null if successful) |
+
+> **Note:** Path A candidates can ignore the identity-related columns - they won't affect your implementation.
 
 ### What's Provided
 
 - `pom.xml` - Maven build file with Spring Boot, JPA, H2, and Validation dependencies
 - `application.properties` - H2 database configuration (ready to use)
-- `schema.sql` - Creates the contacts table on startup
-- `data.sql` - Seeds 15 sample contacts
+- `schema.sql` - Creates the database tables on startup
+- `data.sql` - Seeds 15 sample contacts (with identity data for Path B)
 - `AddressBookApplication.java` - Spring Boot entry point
 
 ---
