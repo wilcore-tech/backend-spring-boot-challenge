@@ -26,21 +26,27 @@ The API should allow clients to view, search, and edit the contact database. You
 
 ## Details
 
-### Core Requirements (All Candidates)
-
-Create endpoints that do each of the following things. You should decide appropriate naming and methods.
-
-- List all contacts, with options for pagination and sorting.
-  - *Example: Get page 2 of 10 contacts, sorted by lastName in descending order.*
-- View details for a specific contact.
-  - *Example: Retrieve the contact with ID 5.*
-- Create a new contact. Return the created contact with its assigned ID.
+> ⚠️ **Complete these in order:**
+> 1. First, complete all **Core Requirements** below
+> 2. Then, choose **one** of the two paths (A or B) based on your interview focus
 
 ---
 
-### Choose Your Path
+### Step 1: Core Requirements *(Required for All Candidates)*
 
-After completing the core requirements, complete **ONE** of the following paths based on your interview focus:
+Create endpoints that do each of the following things. You should decide appropriate naming and methods.
+
+- [ ] **List all contacts** with options for pagination and sorting
+  - *Example: Get page 2 of 10 contacts, sorted by lastName in descending order.*
+- [ ] **View details** for a specific contact
+  - *Example: Retrieve the contact with ID 5.*
+- [ ] **Create** a new contact. Return the created contact with its assigned ID.
+
+---
+
+### Step 2: Choose Your Path
+
+**After completing the core requirements above**, complete **ONE** of the following paths:
 
 ---
 
@@ -125,6 +131,10 @@ The H2 database is pre-configured with sample data.
 - `schema.sql` - Creates the database tables on startup
 - `data.sql` - Seeds 15 sample contacts (with identity data for Path B)
 - `AddressBookApplication.java` - Spring Boot entry point
+- **Model classes** (in `io.wilcore.addressbook.model`):
+  - `Contact.java` - JPA entity mapped to the `contacts` table
+  - `VerificationAudit.java` - JPA entity for audit logging (Path B)
+  - `AccountLevel.java` - Enum for account verification levels (Path B)
 
 ---
 
